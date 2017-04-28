@@ -1,0 +1,38 @@
+/*
+ * A simple turtle bot specification 
+ */
+TurtleBot test{
+	
+
+	
+	// feel free to add as many custom waypoint types, but at least one
+	waypoint types = {Hotel, GasStation, PetrolStation, Airport}
+	
+	// we define way points, which are of one or multiple types
+	waypoints = {
+		Hotel W0 (x=1, y=1),
+		GasStation W1 ( x=1, y=2 ),
+		PetrolStation&GasStation W2 ( x=3, y=4 ),
+		Airport W3 ( x=10, y=5 )
+	}
+	
+	// we define the starting point for the bot
+	bot starts at = W0
+	
+	/*
+	 * now define missions; these consist of multiple tasks:
+	 * line: just visit the waypoints in the specified order
+	 * shortest path: visit the waypoints in the order that yields the shortest total distance
+	 * return to start: the bot returns to the start position
+	 */
+	missions = {
+		ReFuel{
+			shortest path (W1,W2), return to start
+		},
+		ShuttleService{
+			shortest path (W1,W3), line(W2), return to start
+		} 
+	}
+	
+	area = ( max x = 12, max y = 12)	
+}

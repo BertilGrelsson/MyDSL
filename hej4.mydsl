@@ -1,0 +1,56 @@
+/*
+ * A simple turtle bot specification 
+ */
+TurtleBot test{
+	
+	waypoint types = {Parking, Bank, Airport, University, ExoticPlace, CelebrationPoint}
+	
+	// way points
+	waypoints = {
+		Parking P1 (x=1, y=5),
+		Bank B1 ( x=3, y=3 ),
+		Bank B2 ( x=4, y=4 ),
+		Airport Lkp ( x=6, y=6 ),
+		Airport ARN ( x=8, y=7),
+		University LiU ( x=5, y=5 ),
+		University UU ( x=11, y=11 ),
+		University KTH ( x=8, y=6 ),
+		University LU ( x=2, y=2 ),
+		University CTH ( x=3, y=4 ),
+		ExoticPlace Nuuk ( x=1, y=11 ),
+		ExoticPlace Sydney (x=11, y = 1),
+		ExoticPlace MachuPicchu (x=1, y = 1),
+		CelebrationPoint C1 (x = 2, y= 5),
+		CelebrationPoint C2 (x = 2, y= 6),
+		CelebrationPoint C3 (x = 1, y= 6)
+	}
+	
+	// starting point
+	bot starts at = P1
+	
+	/*
+	 * missions
+	 * line: just visit the waypoints in the specified order
+	 * shortest path: visit the waypoints in the order that yields the shortest total distance
+	 * return to start: the bot returns to the start position
+	 */
+	missions = {
+		Delivery1{
+			line (P1, B1, Lkp), shortest path (LiU, UU), return to start
+		},
+		CelebrationLap1{
+			line (C1, C2, C3, P1)
+		},
+		Delivery2{
+			line (B2, ARN), shortest path (LiU, UU, KTH, LU, CTH), return to start
+		},
+		CelebrationLap2{
+			line (C3, C2, C1, P1)
+		},
+		Vacation{
+			line (B1), line (ARN), shortest path (CTH, LU, LiU), line(Nuuk, Sydney, MachuPicchu), return to start
+		} 
+	}
+	
+	area = ( max x = 12, max y = 12)	
+}

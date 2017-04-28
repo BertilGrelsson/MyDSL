@@ -1,0 +1,39 @@
+TurtleBot test{
+	
+
+	
+	waypoint types = {Storage, GasStation, ParkingLot, Customer}
+	
+	// way points
+	waypoints = {
+		ParkingLot W0 (x=1, y=1),
+		GasStation W1 ( x=1, y=3 ),
+		Storage&GasStation Frankfurt ( x=10, y=1 ),
+		Storage Berlin ( x=3, y=10 ),
+		Customer C1 ( x=6, y=5 ),
+		Customer C2 ( x=10, y=5 ),
+		Customer C3 ( x=6, y=2 ),
+		Customer C4 ( x=2, y=8 ),
+		Customer C5 ( x=3, y=7 )
+	}
+	
+	// starting point
+	bot starts at = W0
+	
+	/*
+	 * missions
+	 * line: just visit the waypoints in the specified order
+	 * shortest path: visit the waypoints in the order that yields the shortest total distance
+	 * return to start: the bot returns to the start position
+	 */
+	missions = {
+		DeliveryRoute1{
+			line (W1, Berlin), shortest path (C1, C2, C3, C4), return to start
+		},
+		DeliveryRoute2{
+			line (Frankfurt), shortest path (C1, C5, C3), line(Berlin), return to start
+		} 
+	}
+	
+	area = ( max x = 12, max y = 12)	
+}
